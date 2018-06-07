@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+     <!--fonts awesome-->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+
+    <!--JQUERY-->
+    <script src="js/vendors/jquery.js"></script>
+
+    <style>
+        .active a{
+            color: rgb(52, 165, 217);
+
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="about-html">
+
+        <div class="about-body">  
+                <div class="video">
+                    <video src="videoplayback.mp4" type="video/mp4">
+                        <source src="videoplayback.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="video-overlay">
+                        <div class="video-button">
+                            <div class="video-play">
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="video-track">
+                        <div class="volume">
+                            <div class="volume-icons">
+                                <i class="fa fa-volume-up volume-on" aria-hidden="true" ></i>
+                                <i class="fa fa-volume-off volume-off" aria-hidden="true"></i>
+                            </div>
+                            
+                            <input type="range" class="volume-track" min="0" max="100" value="30">
+                        </div>
+
+                        <div class="time-track">
+                            <span class="video-length-track"></span>
+                        </div>
+
+                        <div class="time-show">
+                            <p class="time-passed">12</p>
+                            <p>&nbsp; / &nbsp; </p>
+                            <p class="max-time"></p>
+                        </div>
+
+                    </div>
+                   
+                </div>
+
+        </div>
+
+    </div>
+
+    <script src="js/resources/video-player.js"></script>
+
+    
+</body>
+</html>
