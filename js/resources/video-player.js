@@ -115,24 +115,34 @@ window.onload = function(){
     console.log(video.duration);
     
 
-    //changes the time passed tack depending on video current time
+    //changes the time passed tack depending on video current time and updates time passed
     video.ontimeupdate = () => {
+
         videoLengthTrack.style.width = (videoLengthTrackMax * video.currentTime) / video.duration + 'px';
 
-        let currentVideoTime = document.querySelector('.time-passed');
-        let videoDuration = video.duration;
-        let videoHours = Math.floor(videoDuration / 3600);
-        let videoMinutes = Math.floor((videoDuration - videoHours * 3600) / 60);
-        let videoSeconds = Math.round(videoDuration - videoHours * 3600 - videoMinutes * 60);
+        let timePassed = document.querySelector('.time-passed');
+        let videoCurrentTtime = video.currentTime;
+        let videoCurrentHours = Math.floor(videoCurrentTtime / 3600);
+        let videoCurrentMinutes = Math.floor((videoCurrentTtime - videoCurrentHours * 3600) / 60);
+        let videoCurrentSeconds = Math.round(videoCurrentTtime - videoCurrentHours * 3600 - videoCurrentMinutes * 60);
 
-        if(videoHours === 0){
-                maxTime.textContent = `${videoMinutes}:${videoSeconds}`;
+        if(videoCurrentSeconds < 10){
+            videoCurrentSeconds = '0' + videoCurrentSeconds;
+        }
+
+        if(videoCurrentHours === 0){
+                timePassed.textContent = `${videoCurrentMinutes}:${videoCurrentSeconds}`;
         } else{
-            maxTime.textContent = `${videoHours}:${videoMinutes}:${videoSeconds}`;
+            timePassed.textContent = `${videoCurrentHours}:${videoCurrentMinutes}:${videoCurrentSeconds}`;
+        }
+
+        if(video.ended){
+            videoOverlay.style.display = 'flex';
         }
 
     }
 
+    
     
 
     
