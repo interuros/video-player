@@ -34,7 +34,7 @@
 
         <div class="about-body">  
                 <div class="video">
-                    <video src="videoplayback.mp4" type="video/mp4">
+                    <video src="videoplayback.mp4" type="video/mp4" id="js--video">
                         <source src="videoplayback.mp4" type="video/mp4">
                     </video>
 
@@ -47,29 +47,42 @@
                     </div>
 
                     <div class="video-track">
-                        <div class="volume">
-                            <div class="volume-icons">
-                                <i class="fa fa-volume-up volume-on" aria-hidden="true" ></i>
-                                <i class="fa fa-volume-off volume-off" aria-hidden="true"></i>
+
+                        <div class="left-side">
+                            <div class="play-pause-video">
+                                <i class="fa fa-play play-video" aria-hidden="true"></i>
+                                <i class="fa fa-pause pause-video" aria-hidden="true"></i>
                             </div>
-                            
-                            <input type="range" class="volume-track" min="0" max="100" value="30">
-                        </div>
 
-                        <div class="time-track">
-                            <span class="video-length-track"></span>
-                        </div>
+                            <div class="volume">
+                                <div class="volume-icons">
+                                    <i class="fa fa-volume-up volume-on" aria-hidden="true" ></i>
+                                    <i class="fa fa-volume-off volume-off" aria-hidden="true"></i>
+                                </div>
+                                
+                                <input type="range" class="volume-track" min="0" max="100">
+                            </div>
 
-                        <div class="time-show">
-                            <p class="time-passed"></p>
-                            <p>&nbsp; / &nbsp; </p>
-                            <p class="max-time"></p>
+                            <div class="time-track">
+                                <span class="video-length-track"></span>
+                            </div>
+
+                            <div class="time-show">
+                                <p class="time-passed"></p>
+                                <p>&nbsp; / &nbsp; </p>
+                                <p class="max-time"></p>
+                            </div>
+                        </div>
+                        
+
+                        <div class="fullscreen">
+                            <i class="fa fa-arrows-alt fullscreen-on" aria-hidden="true"></i>
+                            <i class="fa fa-window-minimize fullscreen-off" aria-hidden="true"></i>
                         </div>
 
                     </div>
                    
                 </div>
-
         </div>
 
     </div>
