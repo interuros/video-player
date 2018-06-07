@@ -202,8 +202,6 @@ window.onload = function(){
           fullscreenOn.style.display = "none";
           fullscreenOff.style.display = "block";
 
-          
-
     });
 
     //minimize video
@@ -221,6 +219,23 @@ window.onload = function(){
           fullscreenOn.style.display = "block";
 
     });
+
+
+
+    document.addEventListener('fullscreenchange', fullscreenOffEsc);
+    document.addEventListener('webkitfullscreenchange', fullscreenOffEsc);
+    document.addEventListener('mozfullscreenchange', fullscreenOffEsc);
+    document.addEventListener('MSFullscreenChange', fullscreenOffEsc);
+
+    function  fullscreenOffEsc(){
+
+        if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
+            fullscreenOff.style.display = "none";
+            fullscreenOn.style.display = "block";
+        }
+    
+    }
+   
 
 
 }
