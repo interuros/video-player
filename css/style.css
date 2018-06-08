@@ -44,7 +44,7 @@ html{
     height: 100%;
     width: 100%;
     background-color: red;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;

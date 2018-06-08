@@ -29,6 +29,8 @@ window.onload = function(){
     videoPlay.addEventListener('click', () => {
         videoOverlay.style.display = 'none';
         video.play();
+        playButton.style.display = 'none';
+        pauseButton.style.display = 'block';
 
     });
 
