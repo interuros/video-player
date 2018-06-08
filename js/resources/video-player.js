@@ -96,6 +96,10 @@ window.onload = function(){
         let videoMinutes = Math.floor((videoDuration - videoHours * 3600) / 60);
         let videoSeconds = Math.round(videoDuration - videoHours * 3600 - videoMinutes * 60);
 
+        if(videoSeconds < 10){
+            videoSeconds = '0' + videoSeconds;
+        }
+
         if(videoHours === 0){
                 maxTime.textContent = `${videoMinutes}:${videoSeconds}`;
         } else{
@@ -245,6 +249,10 @@ window.onload = function(){
 
     
    console.log(videoLengthTrack);
+
+
+
+   
    
 
     videoLengthTrack.addEventListener('mousemove', (event) => {
@@ -262,7 +270,7 @@ window.onload = function(){
         let hrs = Math.floor(timeOnTrack / 3600);
         let mnt = Math.floor((timeOnTrack - hrs * 3600) / 60);
         let sec = Math.round(timeOnTrack - hrs * 3600 - mnt * 60);
-
+        
         if(sec < 10){
             sec = '0' + sec;
         }
@@ -279,8 +287,23 @@ window.onload = function(){
     videoLengthTrack.addEventListener('mouseleave', () => {
         trackTimeShow.style.display = "none";
     });
+
+
     
-   
+   videoLengthTrack.addEventListener('click', (event) =>{
+
+    let mouseX = event.clientX;
+
+    let videoLengthTrackWidth = videoLengthTrack.offsetWidth;
+
+    let timeOnTrack = Math.floor((mouseX * videoDuration) / videoLengthTrackWidth);
+
+    video.currentTime = timeOnTrack;
+
+    return timeOnTrack;
+
+    
+   });
 
 
 }
