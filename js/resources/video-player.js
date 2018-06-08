@@ -15,9 +15,6 @@ window.onload = function(){
     let volumeOn = document.querySelector('.volume-on');
     let volumeOff = document.querySelector('.volume-off');
 
-    //selects length of time track and of the passed time track
-    let videoLengthTrack = document.querySelector('.video-length-track');
-    let videoLengthTrackMax = document.querySelector('.time-track').offsetWidth;
     let fullscreenOn = document.querySelector('.fullscreen-on');
     let fullscreenOff = document.querySelector('.fullscreen-off');
 
@@ -88,20 +85,13 @@ window.onload = function(){
         video.volume = volumeTrack.value / 100;
     });
 
-    //changes time track width 
-    window.addEventListener('resize', () =>{
-        videoLengthTrackMax = document.querySelector('.time-track').offsetWidth;
-
-        if(video.ended){
-            videoLengthTrack.style.width = videoLengthTrackMax + 'px';
-        }
-    });
-
-
     //displays video length
+    let videoDuration = video.duration;
+
+
     {   
         let maxTime = document.querySelector('.max-time');
-        let videoDuration = video.duration;
+        
         let videoHours = Math.floor(videoDuration / 3600);
         let videoMinutes = Math.floor((videoDuration - videoHours * 3600) / 60);
         let videoSeconds = Math.round(videoDuration - videoHours * 3600 - videoMinutes * 60);
@@ -121,9 +111,14 @@ window.onload = function(){
     
 
     //changes the time passed tack depending on video current time and updates time passed
+
+    let videoLengthTrack = document.querySelector('.video-length-track');
+    videoLengthTrack.max = Math.floor(video.duration);
+    videoLengthTrack.min = 0;
+
     video.ontimeupdate = () => {
 
-        videoLengthTrack.style.width = (videoLengthTrackMax * video.currentTime) / video.duration + 'px';
+        videoLengthTrack.value = video.currentTime;
 
         let timePassed = document.querySelector('.time-passed');
         let videoCurrentTtime = video.currentTime;
@@ -239,6 +234,52 @@ window.onload = function(){
         }
     
     }
+
+
+
+    //displays time on tack when hovered
+
+    let trackTimeShow = document.querySelector('.track-time-show');
+
+    console.log(trackTimeShow);
+
+    
+   console.log(videoLengthTrack);
+   
+
+    videoLengthTrack.addEventListener('mousemove', (event) => {
+
+
+        let mouseX = event.clientX;
+
+        let videoLengthTrackWidth = videoLengthTrack.offsetWidth;
+
+        let timeOnTrack = Math.floor((mouseX * videoDuration) / videoLengthTrackWidth);
+
+        trackTimeShow.style.display = "block";
+        trackTimeShow.style.left = mouseX - 20 + 'px';
+        
+        let hrs = Math.floor(timeOnTrack / 3600);
+        let mnt = Math.floor((timeOnTrack - hrs * 3600) / 60);
+        let sec = Math.round(timeOnTrack - hrs * 3600 - mnt * 60);
+
+        if(sec < 10){
+            sec = '0' + sec;
+        }
+
+        if(hrs === 0){
+            trackTimeShow.textContent = `${mnt}:${sec}`;
+        } else{
+            trackTimeShow.textContent = `${hrs}:${mnt}:${sec}`;
+        }
+
+    });
+
+
+    videoLengthTrack.addEventListener('mouseleave', () => {
+        trackTimeShow.style.display = "none";
+    });
+    
    
 
 
