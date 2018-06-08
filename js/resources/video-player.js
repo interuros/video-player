@@ -38,10 +38,14 @@ window.onload = function(){
     //pause video
     video.addEventListener('click', () => {
         
-        if(!video.paused){
-            video.pause();
-        } else{
+        if(video.paused){
             video.play();
+            playButton.style.display = 'none';
+            pauseButton.style.display = 'block';
+        } else{
+            video.pause();
+            playButton.style.display = 'block';
+            pauseButton.style.display = 'none';
         }
     });
 
