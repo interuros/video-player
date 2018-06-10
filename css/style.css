@@ -208,14 +208,14 @@ box-shadow: -130px 0px 0px 129px rgba(255,255,255, 1);
 
   .time-track {
     -webkit-appearance: none;
-    width: 100%;
+    width: 95%;
     padding: 0;
     border: none;
     border-radius: 0;
     overflow: hidden;
     margin: 0;
     position: absolute;
-    top: 0;
+    top: 5px;
     left: 50%;
     height: 4px;
     background-color: #333;

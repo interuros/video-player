@@ -341,7 +341,7 @@ window.onload = function(){
         let x = event.clientX;
         let y = event.clientY;
 
-        let hide;
+        /*let hide;
 
         clearTimeout(hide);
 
@@ -353,7 +353,7 @@ window.onload = function(){
             if(newX == x || newY == y)
             videoTrack.style.transform = 'translateY(100%)';
             
-        }, 5000);
+        }, 5000);*/
 
         
 
