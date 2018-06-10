@@ -142,6 +142,12 @@ window.onload = function(){
             timePassed.textContent = `${videoCurrentHours}:${videoCurrentMinutes}:${videoCurrentSeconds}`;
         }
 
+
+        if(video.currentTime >= video.duration){
+            playButton.style.display = 'block';
+            pauseButton.style.display = 'none';
+        }
+
     }
 
 
@@ -255,7 +261,8 @@ window.onload = function(){
 
 
    
-   
+   let trackTimeImage = document.querySelector('.track-time-image');
+   let trackShowImage = document.querySelector('.track-show-image');
 
     videoLengthTrack.addEventListener('mousemove', (event) => {
 
@@ -267,7 +274,22 @@ window.onload = function(){
         let timeOnTrack = Math.floor((mouseX * videoDuration) / videoLengthTrackWidth);
 
         trackTimeShow.style.display = "block";
-        trackTimeShow.style.left = mouseX - 20 + 'px';
+        trackTimeShow.style.left = mouseX - 36 + 'px';
+
+        trackTimeImage.style.display = "block";
+        trackTimeImage.style.left = mouseX + - 10 + 'px';
+        trackShowImage.currentTime = timeOnTrack;
+
+        console.log(videoContainer.offsetWidth);
+        
+
+        if(videoContainer.offsetWidth - mouseX < trackTimeImage.offsetWidth / 2){
+            trackTimeShow.style.left = videoContainer.offsetWidth - 150 + 'px';
+            trackTimeImage.style.left = videoContainer.offsetWidth - 125 + 'px';
+        } else if(mouseX <  trackTimeImage.offsetWidth / 2){
+            trackTimeShow.style.left = 75 + 'px';
+            trackTimeImage.style.left = 100 + 'px';
+        }
         
         let hrs = Math.floor(timeOnTrack / 3600);
         let mnt = Math.floor((timeOnTrack - hrs * 3600) / 60);
@@ -288,6 +310,7 @@ window.onload = function(){
 
     videoLengthTrack.addEventListener('mouseleave', () => {
         trackTimeShow.style.display = "none";
+        trackTimeImage.style.display = "none";
     });
 
 
@@ -298,7 +321,7 @@ window.onload = function(){
 
     let videoLengthTrackWidth = videoLengthTrack.offsetWidth;
 
-    let timeOnTrack = Math.floor((mouseX * videoDuration) / videoLengthTrackWidth);
+    let timeOnTrack = Math.floor(mouseX * videoDuration) / videoLengthTrackWidth;
 
     video.currentTime = timeOnTrack;
 
@@ -306,6 +329,44 @@ window.onload = function(){
 
     
    });
+
+   let videoTrack = document.querySelector('.video-track');
+
+ 
+
+    videoContainer.addEventListener('mousemove', (event) => {
+
+        videoTrack.style.transform = 'translateY(0%)';
+
+        let x = event.clientX;
+        let y = event.clientY;
+
+        let hide;
+
+        clearTimeout(hide);
+
+        hide = setTimeout(() =>{
+
+            let newX = event.clientX;
+            let newY = event.clientY;
+
+            if(newX == x || newY == y)
+            videoTrack.style.transform = 'translateY(100%)';
+            
+        }, 5000);
+
+        
+
+
+
+    });
+
+
+    videoContainer.addEventListener('mouseleave', () => {
+
+        videoTrack.style.transform = 'translateY(100%)';
+
+    });
 
 
 }

@@ -30,11 +30,13 @@ html{
     display: flex;
     position: relative;
     flex-direction: column;
-    height: 100vh;
+    width: 500px;
+    height: auto;
     background-color: #262626;
+    overflow: hidden;
 }
 
-.video video{
+.video .video-main{
     width: 100%;
     height: 100%;
 }
@@ -84,18 +86,21 @@ html{
     position: absolute;
     padding: 15px;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.158);
+    background-color: rgba(0, 0, 0, 0.623);
     width: 100%;
     display: flex;   
     z-index: 1000;
     align-items: center;
     justify-content: space-between;
+    transform: translateY(100%);
+    transition: .3s;
 }
 
 
 .left-side{
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 
@@ -211,12 +216,11 @@ box-shadow: -130px 0px 0px 129px rgba(255,255,255, 1);
     margin: 0;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 50%;
     height: 4px;
-    width: 100vw!important;
     background-color: #333;
     display: flex;
-    transform: translateY(-100%);
+    transform: translateX(-50%);
     transition: .2s;
     cursor: pointer;
   }
@@ -335,7 +339,7 @@ i.fullscreen-off{
   }
   
   /* deeper elements */
-  :-webkit-full-screen video {
+  :-webkit-full-screen .video-main {
     width: 100%;
     height: 100%;
   }
@@ -352,21 +356,34 @@ i.fullscreen-off{
   .track-time-show{
       position: absolute;
       background-color: rgb(92, 86, 86);
-      top: -20px;
+      top: -40px;
       transform: translateY(-100%);
-      padding: 10px;
+      padding: 5px 10px;
       border-radius: 5px;
       color: white;
       display: none;
+      z-index: 3000;
   }
 
-  .track-time-show::after{
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateY(100%) translateX(-50%);
-      border: 8px solid transparent;
-      border-top-color: rgb(92, 86, 86);
-      
+
+
+  .track-time-image{
+    position: absolute;
+    background-color: rgb(92, 86, 86);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    transform: translateY(-100%) translateX(-50%);
+    top: -40px;
+    display: none;
+    width: 200px;
+    height: 125px;
+    z-index: 2000;
+    border: 3px solid rgb(92, 86, 86)
+  }
+
+  .track-show-image{
+      width: 100%;
+      height: 100%;
+
   }
