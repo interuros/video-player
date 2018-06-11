@@ -350,8 +350,12 @@ window.onload = function(){
             let newX = event.clientX;
             let newY = event.clientY;
 
-            if(newX == x || newY == y)
-            videoTrack.style.transform = 'translateY(100%)';
+            if(newX == x || newY == y){
+
+                videoTrack.style.transform = 'translateY(100%)';
+            }else {
+                    clearTimeout(hide);
+                }
             
         }, 5000);*/
 
